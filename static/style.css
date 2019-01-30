@@ -1,0 +1,173 @@
+/* css reset */
+html, body, h1, p, fieldset, a, table, em, strong {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-decoration: none;
+    font-weight: inherit;
+    font-style: inherit;
+    text-indent: 0;
+    font-size: 100%;
+}
+
+/* es akkor innen indul */
+body {
+    font-family: sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.4;
+    background: #f8f8f8;
+    color: #333;
+    margin: 1em;
+}
+@media print {
+    body {
+        font-family: serif;
+        margin: 0;
+    }
+}
+
+
+div.bal {
+    float: left;
+    margin-right: 3em;
+    width: 11em;
+}
+    @media print {
+        div.bal {
+            display: none;
+        }
+    }
+    fieldset {
+        width: 100%;
+        text-align: right;
+    }
+    legend {
+        text-align: left;
+        font-weight: bold;
+        font-size: 1.44em;
+    }
+    label {
+        display: block;
+    }
+    input {
+        width: 5em;
+        margin-bottom: 0.25em;
+    }
+    button {
+        margin-top: 1em;
+    }
+    hr {
+        margin: 0.5em 0;
+        border: 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+p.letolt {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 90%;
+}
+    @media print {
+        p.letolt {
+            display: none;
+        }
+    }
+    p.letolt a {
+        color: #888;
+    }
+    p.letolt a:hover {
+        text-decoration: underline;
+    }
+
+div.jobb {
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    empty-cells: show;
+    background-color: #a5dba5;
+    border-top: 3px solid #638563;
+    border-bottom: 3px solid #638563;
+    margin-bottom: 1em;
+}
+    th, td {
+        border-bottom: 1px solid #638563;
+        vertical-align: middle;
+    }
+    th {
+        border-bottom: 3px solid #638563;
+    }
+    @media print {
+        table {
+            background-color: white;
+            border-top-color: black;
+            border-bottom-color: black;
+        }
+        th, td {
+            border-bottom-color: black;
+        }
+        th {
+            border-bottom-color: black;
+        }
+    }
+    table caption {
+        font-weight: bold;
+        font-size: 1.44em;
+        text-align: left;
+    }
+    table img {
+        margin-bottom: -2px;
+        display: inline;
+    }
+
+/* TABLAZATOK */
+table.naptar td,
+table.naptar th {
+    text-align: center;
+    padding: 0.15em;
+    width: 7em;
+}
+table.naptar th {
+    font-size: 1.2em;
+}
+    .honapok {
+        font-weight: normal;
+        font-size: 0.83em;
+    }
+    .nap {
+        font-size: 1.44em;
+        font-weight: bold;
+    }
+    .hetvege .nap {
+        color: #900;
+    }
+    .aznapi {
+        box-shadow: 0 0 0 0.25em #900 inset;
+    }
+    .szezonvaltas .nap {
+        border: 2px solid #900;
+        padding: 0.25em;
+        margin: -0.25em;
+        border-radius: 100%;
+        background-color: #dba5a5;
+        display: inline-block;
+    }
+    @media print {
+        .szezonvaltas .nap {
+            background-color: inherit;
+            border-color: #000;
+        }
+    }
+
+table.elem {
+    width: 100%;
+}
+table.elem caption {
+    font-size: 1.44em;
+}
+table.elem td,
+table.elem th {
+    padding: 0.25em;
+}

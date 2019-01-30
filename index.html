@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>gan zhi</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script type="text/javascript" src="static/cal.js"></script>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<div class="bal">
+
+<fieldset>
+    <legend>Időpont</legend>
+    <label>Év: <input type="number" size="4" min="1901" max="2049" step="1" id="ev"></label>
+    <label>Hónap: <input type="number" size="2" min="1" max="12" step="1" id="honap"></label>
+    <label>Nap: <input type="number" size="2" min="1" max="31" step="1" id="nap"></label>
+    <label>Óra: <input type="number" size="2" min="0" max="23" step="1" id="ora"></label>
+</fieldset>
+
+<hr>
+
+<table class="elem" id="elemek">
+    <caption>Elemek</caption>
+    <tr><th colspan="2" id="edatum">
+    <tr><td>év<td id="eev">
+    <tr><td>hónap<td id="ehonap">
+    <tr><td>nap<td id="enap">
+    <tr><td>óra<td id="eora">
+</table>
+
+<table class="elem" id="osszesen">
+    <caption>Összesen</caption>
+    <tr><th>elem<th>yang<th>yin
+    <tr><td>fa<td id="osszeg0"><td id="osszeg1">
+    <tr><td>tűz<td id="osszeg2"><td id="osszeg3">
+    <tr><td>föld<td id="osszeg4"><td id="osszeg5">
+    <tr><td>fém<td id="osszeg6"><td id="osszeg7">
+    <tr><td>víz<td id="osszeg8"><td id="osszeg9">
+</table>
+
+<p class="letolt">
+    <a href="naptar.zip">letölthető változat</a>
+</p>
+
+</div>
+
+<div class="jobb">
+  <table class="naptar">
+    <caption>Naptár: <span id="naptarcaption"></span><br>
+        <span class="honapok">eleje: <span id="honapeleje"></span>, utána: <span id="honapkozepe"></span></span></caption>
+
+    <thead>
+    <tr><th>Hétfő<th>Kedd<th>Szerda<th>Csütörtök<th>Péntek<th class="hetvege">Szombat<th class="hetvege">Vasárnap</tr>
+    </thead>
+
+    <tbody id="naptarbody">
+    <tr><td>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</body>
+
+</html>
