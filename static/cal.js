@@ -155,49 +155,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
         [3, 5, 4, 5, 5, 6, 7, 7, 8, 7, 7, 5]  /* 2049 */
     ];
 
+    // egi elemek
+    var Gan = ["Fa","fa","T\u0171z","t\u0171z","F\u00f6ld","f\u00f6ld","F\u00e9m","f\u00e9m","V\u00edz","v\u00edz"];
+    var Gan_jel = ["\u7532","\u4e59","\u4e19","\u4e01","\u620a","\u5df1","\u5e9a","\u8f9b","\u58ec","\u7678"];
+    // foldi elemek
+    var Zhi = ["patk\u00e1ny","bivaly","tigris","ny\u00fal","s\u00e1rk\u00e1ny","k\u00edgy\u00f3","l\u00f3","kecske","majom","kakas","kutya","diszn\u00f3"];
+    var Zhi_jel = ["\u5b50","\u4e11","\u5bc5","\u536f","\u8fb0","\u5df3","\u5348","\u672a","\u7533","\u9149","\u620c","\u4ea5"];
+    // foldi elemek atszamolasa egi elemre: Viz, fold, Fa, fa, Fold, tuz, Tuz, fold, Fem, fem, Fold, viz.
+    var foldibol_egi = [ 8, 5, 0, 1, 4, 3, 2, 5, 6, 7, 4, 9 ];
+    // idominosegek
+    var Time = ["fel\u00e1ll\u00edt\u00f3d\u00e1s","gy\u00f6k\u00e9rtelen\u00edt\u00e9s","tel\u00edt\u0151d\u00e9s","kiegyenl\u00edt\u0151d\u00e9s","elhat\u00e1roz\u00e1s","visszatart\u00e1s","\u00e1tt\u00f6r\u00e9s","vesz\u00e9ly","beteljesed\u00e9s","begy\u0171jt\u00e9s","megny\u00edl\u00e1s","bez\u00e1r\u00f3d\u00e1s"];
+    var Time_jel = ["\u5efa","\u9664","\u6eff","\u5e73","\u5b9a","\u57f7","\u7834","\u5371","\u6210","\u6536","\u958b","\u9589"];
+    var HonapNev = ["janu\u00e1r","febru\u00e1r","m\u00e1rcius","\u00e1prilis","m\u00e1jus","j\u00fanius","j\u00falius","augusztus","szeptember","okt\u00f3ber","november","december"];
+    var HonapHossz = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+    var HonapHosszSzoko = [ 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
     function date(year, month, day, hour){
         this.year = year;
         this.month = month;
         this.day = day;
         this.hour = hour;
     }
-
-    // egi elemek
-    var Gan = ["Fa","fa","T\u0171z","t\u0171z","F\u00f6ld","f\u00f6ld","F\u00e9m","f\u00e9m","V\u00edz","v\u00edz"];
-    // foldi elemek
-    var Zhi = ["patk\u00e1ny","bivaly","tigris","ny\u00fal","s\u00e1rk\u00e1ny","k\u00edgy\u00f3","l\u00f3","kecske","majom","kakas","kutya","diszn\u00f3"];
-    // foldi elemek atszamolasa egi elemre: Viz, fold, Fa, fa, Fold, tuz, Tuz, fold, Fem, fem, Fold, viz.
-    var foldibol_egi = [ 8, 5, 0, 1, 4, 3, 2, 5, 6, 7, 4, 9 ];
-    var Time = ["fel\u00e1ll\u00edt\u00f3d\u00e1s","gy\u00f6k\u00e9rtelen\u00edt\u00e9s","tel\u00edt\u0151d\u00e9s","kiegyenl\u00edt\u0151d\u00e9s","elhat\u00e1roz\u00e1s","visszatart\u00e1s","\u00e1tt\u00f6r\u00e9s","vesz\u00e9ly","beteljesed\u00e9s","begy\u0171jt\u00e9s","megny\u00edl\u00e1s","bez\u00e1r\u00f3d\u00e1s"];
-    var HonapNev = ["","janu\u00e1r","febru\u00e1r","m\u00e1rcius","\u00e1prilis","m\u00e1jus","j\u00fanius","j\u00falius","augusztus","szeptember","okt\u00f3ber","november","december"];
-    var daysInMonth = [ 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-    var daysInMonthLeap = [ 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
     
     function leftpad(num) {
         if (num < 10)
             return "0" + num;
         else
             return "" + num;
-    }
-
-    function img(mi, szam) {
-        return "<img src=\"static/" + mi + leftpad(szam) + ".png\" width=\"20\" height=\"20\">";
-    }
-
-    function ganzhi_kep(gan, zhi) {
-        return img("gan", gan+1) + img("zhi", zhi+1);
-    }
-
-    function ganzhi_felirat(gan, zhi) {
-        return Gan[gan] + " " + Zhi[zhi];
-    }
-
-    function ido_kep(zhi) {
-        return img("time", (zhi.day - zhi.month + 24) % 12 + 1);
-    }
-
-    function ido_felirat(zhi) {
-        return Time[(zhi.day - zhi.month + 24) % 12];
     }
 
     function LeapYear(y) {
@@ -227,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     function monthplus(solar, gan, zhi) {
         // az atugrott honap hossza
-        var days = LeapYear(solar.year) ? daysInMonthLeap[solar.month] : daysInMonth[solar.month];
+        var days = LeapYear(solar.year) ? HonapHosszSzoko[solar.month - 1] : HonapHossz[solar.month - 1];
         gan.month += 1;          // pont 1 szezont lepunk, mert az 1 honap
         zhi.month += 1;
         if (solar.month == 2) {  // ha most februar, akkor kinai ujevet ugrunk
@@ -312,7 +296,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         return {
             gan: gan,
-            zhi: zhi
+            zhi: zhi,
+            time: (zhi.day - zhi.month + 24) % 12
         };
     }
 
@@ -323,10 +308,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var zhi = computed.zhi;
 
         document.getElementById("edatum").innerHTML = ev + "." + leftpad(honap) + "." + leftpad(nap) + ". " + leftpad(ora) + "h";
-        document.getElementById("eev").innerHTML = ganzhi_kep(gan.year, zhi.year) + "<br>" + ganzhi_felirat(gan.year, zhi.year);
-        document.getElementById("ehonap").innerHTML = ganzhi_kep(gan.month, zhi.month) + "<br>" + ganzhi_felirat(gan.month, zhi.month);
-        document.getElementById("enap").innerHTML = ganzhi_kep(gan.day, zhi.day) + "<br>" + ganzhi_felirat(gan.day, zhi.day);
-        document.getElementById("eora").innerHTML = ganzhi_kep(gan.hour, zhi.hour) + "<br>" + ganzhi_felirat(gan.hour, zhi.hour);
+        document.getElementById("eev").innerHTML = Gan_jel[gan.year] + Zhi_jel[zhi.year] + "<br>" + Gan[gan.year] + ' ' + Zhi[zhi.year];
+        document.getElementById("ehonap").innerHTML = Gan_jel[gan.month] + Zhi_jel[zhi.month] + "<br>" + Gan[gan.month] + ' ' + Zhi[zhi.month];
+        document.getElementById("enap").innerHTML = Gan_jel[gan.day] + Zhi_jel[zhi.day] + "<br>" + Gan[gan.day] + ' ' + Zhi[zhi.day];
+        document.getElementById("eora").innerHTML = Gan_jel[gan.hour] + Zhi_jel[zhi.hour] + "<br>" + Gan[gan.hour] + ' ' + Zhi[zhi.hour];
 
         var mennyi = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         mennyi[gan.year]++;
@@ -369,23 +354,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var solar = new date(ev, honap, 1, 12);
         var cells = addrowtotable(tbody, 7);
 
-        var daysInThisMonth = LeapYear(ev) ? daysInMonthLeap[honap] : daysInMonth[honap];
-        for (var n = 1; n <= daysInThisMonth; n++) {
+        var hossz = LeapYear(ev) ? HonapHosszSzoko[honap - 1] : HonapHossz[honap - 1];
+        for (var n = 1; n <= hossz; n++) {
             var solar = new date(ev, honap, n, 12);
             var computed = computedate(solar);
             var gan = computed.gan;
             var zhi = computed.zhi;
+            var time = computed.time;
             var cell = cells[dow];
-            cell.innerHTML = '<span class="nap">' + solar.day + '<\/span> ' + ganzhi_kep(gan.day, zhi.day) + ' ' + ido_kep(zhi) + '<br>' + ganzhi_felirat(gan.day, zhi.day) + '<br>' + ido_felirat(zhi);
+            cell.innerHTML = '<span class="nap">' + solar.day + '<\/span> '
+                + Gan_jel[gan.day] + Zhi_jel[zhi.day] + ' ' + Time_jel[time] + '<br>'
+                + Gan[gan.day] + ' ' + Zhi[zhi.day] + '<br>' + Time[time];
             if (n == nap)
                 cell.className = "aznapi";
             if (dow==5 || dow==6)
-                cell.className+=" hetvege";
+                cell.className += " hetvege";
             if (jiefest(solar))
-                cell.className+=" szezonvaltas";
+                cell.className += " szezonvaltas";
 
             dow++;
-            if (dow == 7 && n != daysInMonth) {
+            if (dow == 7 && n != hossz) {
                 // vasarnap utan uj sor, ha nem ez volt az utolso nap
                 cells = addrowtotable(tbody, 7);
                 dow = 0;
@@ -393,15 +381,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
 
         // naptar cimsora
-        document.getElementById("naptarcaption").innerHTML = ev + ". " + HonapNev[honap];
+        document.getElementById("naptarcaption").innerHTML = ev + ". " + HonapNev[honap-1];
         // honap adatai
         var eleje = new date(ev, honap, 1, 12);
         var computed = computedate(eleje);
-        document.getElementById("honapeleje").innerHTML = ganzhi_kep(computed.gan.month, computed.zhi.month) + " " + ganzhi_felirat(computed.gan.month, computed.zhi.month);
+        var gan = computed.gan;
+        var zhi = computed.zhi;
+        document.getElementById("honapeleje").innerHTML = Gan_jel[gan.month] + Zhi_jel[zhi.month] + ' ' + Gan[gan.month] + ' ' + Zhi[zhi.month];
         // eddigre biztos volt szezonvaltas
         var kozepe = new date(ev, honap, 15, 12);
         var computed = computedate(kozepe);
-        document.getElementById("honapkozepe").innerHTML = ganzhi_kep(computed.gan.month, computed.zhi.month) + " " + ganzhi_felirat(computed.gan.month, computed.zhi.month);
+        var gan = computed.gan;
+        var zhi = computed.zhi;
+        document.getElementById("honapkozepe").innerHTML = Gan_jel[gan.month] + Zhi_jel[zhi.month] + ' ' + Gan[gan.month] + ' ' + Zhi[zhi.month];
     }
 
 
